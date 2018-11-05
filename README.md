@@ -17,21 +17,21 @@ CREATE TABLE stu (
 ## 查询
 
 1.    先写一个JSP 页面， 里面放一个超链接 。 
-
+```
 <a href="StudentListServlet"> 学生列表显示</a>
-
+```
 2.    写Servlet， 接收请求， 去调用 Service  , 由service去调用dao
 
 3.    先写Dao , 做Dao实现。
 ```java
 public interface StudentDao {
 
-/**
-*  查询所有学生
-* @return  List<Student>
-*/
-    List<Student> findAll()  throws SQLException ;
-    }
+	/**
+	*  查询所有学生
+	* @return  List<Student>
+	*/
+	List<Student> findAll()  throws SQLException ;
+}
 
 ---------------------------------------------
 
@@ -45,7 +45,7 @@ public class StudentDaoImpl implements StudentDao {
 	public List<Student> findAll() throws SQLException {
 		QueryRunner runner = new QueryRunner(JDBCUtil02.getDataSource());
 		return runner.query("select * from stu", new BeanListHandler<Student>(Student.class));
-		}
+	}
 
 }	
 ```
@@ -157,9 +157,9 @@ String value = Arrays.toString(hobby): // [爱好， 篮球， 足球]
 </script>
 ```
 
-2. 在js访问里面判断点击的选项，然后跳转到servlet。
+3. 在js访问里面判断点击的选项，然后跳转到servlet。
 
-3. servlet收到了请求，然后去调用service ， service去调用dao
+4. servlet收到了请求，然后去调用service ， service去调用dao
 
 
 ## 更新
