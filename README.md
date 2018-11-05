@@ -32,9 +32,8 @@
         */
             List<Student> findAll()  throws SQLException ;
             }
-end```
-	---------------------------------------------
 
+	---------------------------------------------
 
 	public class StudentDaoImpl implements StudentDao {
 
@@ -49,7 +48,7 @@ end```
 			}
 
 	}	
-```end
+end```
 4. 再Service , 做Service的实现。
 
 
