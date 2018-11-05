@@ -51,8 +51,7 @@
 ```
 
 4. 再Service , 做Service的实现。
-
-
+```java
 		/**
 		 * 这是学生的业务处理规范
 		 * @author xiaomi
@@ -83,9 +82,10 @@
 				return dao.findAll();
 			}
 		}
+```
 
 5. 在servlet 存储数据，并且做出页面响应。
-
+```java
    		protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
    ​		
@@ -104,13 +104,13 @@
    		}
    		
    	}
-
+```
 6. 在list.jsp上显示数据
 
    EL + JSTL  + 表格
 
 
-##增加 
+## 增加 
 
 1. 先跳转到增加的页面 ， 编写增加的页面
 
@@ -122,24 +122,25 @@
 
 5. 完成了这些存储工作后，需要跳转到列表页面。 这里不能直接跳转到列表页面，否则没有什么内容显示。 应该先跳转到查询所有学生信息的那个Servlet， 由那个Servlet再去跳转到列表页面。
 
-6. 爱好的value 值有多个。 
+6. 爱好的value 值有多个。
 
+```java
    request.getParameter("hobby");
    String[] hobby = 	request.getParameterValues("hobby") ---> String[] 
    String value = Arrays.toString(hobby): // [爱好， 篮球， 足球]
+```
 
-
-###删除
+### 删除
 
 1. 点击超链接，弹出一个询问是否删除的对话框，如果点击了确定，那么就真的删除。
 
+```html
+<a href="#" onclick="doDelete(${stu.sid})">删除</a>
+```
 
-		<a href="#" onclick="doDelete(${stu.sid})">删除</a>
+2. 让超链接，执行一个js方法
 
-​		
-
-1. 让超链接，执行一个js方法
-
+```javascript
    	<script type="text/javascript">
 
    		function doDelete(sid) {
@@ -154,13 +155,14 @@
    			}
    		}
    	</script>
+```
 
 2. 在js访问里面判断点击的选项，然后跳转到servlet。
 
 3. servlet收到了请求，然后去调用service ， service去调用dao
 
 
-##更新
+## 更新
 
 1. 点击列表上的更新， 先跳转到一个EditServlet 
 
@@ -168,7 +170,7 @@
 
 2. 跳转到更新的页面。 ，然后在页面上显示数据
 
-
+```html
 		 <tr>
 			<td>姓名</td>
 			<td><input type="text" name="sname" value="${stu.sname }"></td>
@@ -201,21 +203,23 @@
 			
 			</td>
 		  </tr>
+```
 
 3. 修改完毕后，提交数据到UpdateServlet
 
 > 提交上来的数据是没有带id的，所以我们要手动创建一个隐藏的输入框， 在这里面给定id的值， 以便提交表单，带上id。 
-
+```html
 		<form method="post" action="UpdateServlet">
 			<input type="hidden" name="sid" value="${stu.sid }">
 		
 			...
 		</form>
+```
 
 4. 获取数据，调用service， 调用dao.
 
 
-##分页功能
+## 分页功能
 
 * 物理分页 （真分页）
 
@@ -223,8 +227,10 @@
 
  	优点 内存中的数据量不会太大
 	缺点：对数据库的访问频繁了一点。
-
+	
+```
 	SELECT * FROM stu LIMIT	5 OFFSET 2 
+```
 
 * 逻辑分页 （假分页）
 
