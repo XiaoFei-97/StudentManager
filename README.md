@@ -1,7 +1,7 @@
 ## 学生信息管理系统
 
 ## 数据库准备
-
+```
 CREATE DATABASE stus;
 USE stus;
 CREATE TABLE stu (
@@ -13,7 +13,7 @@ CREATE TABLE stu (
 	hobby VARCHAR(50),
 	info VARCHAR(200)
 );
-
+```
 ## 查询
 
 1.    先写一个JSP 页面， 里面放一个超链接 。 
